@@ -51,12 +51,7 @@ body
   margin-left: 350px;
 }
 
-.grid-item 
-{
-  padding: .5em;
-  border: 1px solid #ddd;
-  text-align: center;
-}
+
 
 .tools
 {
@@ -79,7 +74,8 @@ button
   
 }
 
-.color-picker
+.color-picker,
+.eraser
 {
   display: flex;
   justify-content: center;

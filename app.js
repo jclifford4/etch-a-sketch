@@ -36,11 +36,24 @@ function createGrid(size){
         let square = document.createElement("div");
         square.style.backgroundColor = "white";
         container.appendChild(square);
+        
 
         //change background color of a square on hover
-        square.addEventListener('mouseover', e=>{
-            square.style.backgroundColor = "black";
+        square.addEventListener('mouseover', e => {
+            console.log(e.buttons === 1);
+
+            // Don't allow user select
+            square.style.userSelect = 'none';
+
+            // If mouse click is down, color the square
+            if (e.buttons === 1)
+            {
+                square.style.backgroundColor = "black";
+                
+            }
         })
+
+        
 
 
         //function to reset the grid
@@ -53,6 +66,20 @@ function createGrid(size){
         clearGrid();    
     }
 }
+
+/* Possible mouseover and mousedown event */
+// const squares = [...document.getElementsByClassName('grid-item')];
+// const makeBlack = event => event.target.style.backgroundColor = 'black';
+// function dualListener(squares)
+// {
+//     squares.addEventListener('mousedown', makeBlack);
+//     squares.addEventListener('mouseover', event => {
+//         if (event.buttons == 1) makeBlack(event);
+//     });
+// }
+// squares.forEach(dualListener);
+    
+
 
 createGrid(16);
 
@@ -73,6 +100,7 @@ function updateSliderText(val)
 function updateSliderValue(val)
 {
     sliderValue.value = val;
+
 }
 
 
