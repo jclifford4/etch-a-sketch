@@ -1,30 +1,54 @@
-const container = document.getElementById("container");
+
+// Query the mian components
+let clear = document.querySelector("button");
+let container = document.querySelector('#grid-container');
+
+// Button Listener
+clear.addEventListener('click', () => {
+    resetSize();
+})
+
+// Resets grid size on click
+function resetSize()
+{
+    let number = prompt("What size would you like the grid to be? (1-100)");
+
+    // Dynamically rescales the 
+    container.style.gridTemplateRows = `repeat(${number}, 1fr)`;
+    container.style.gridTemplateColumns = `repeat(${number}, 1fr)`;
+    createGrid(number); // call the createGrid function here and pass the number they entered as the argument. 
+}
+
+// Create the grid size
+function createGrid(size){
+
+    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    
+    // Size
+    for (let i = 0; i < size*size; i++) {
+        
+        let square = document.createElement("div");
+        square.style.backgroundColor = "white";
+        container.appendChild(square);
+
+        //change background color of a square on hover
+        square.addEventListener('mouseover', e=>{
+            square.style.backgroundColor = "black";
+        })
 
 
-function makeRows(rows, cols) {
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-cols', cols);
-    for (c = 0; c < (rows * cols); c++) {
-        let cell = document.createElement("div");
-        // cell.style.width = `${cell.offsetWidth / cols}`;
-        // cell.style.height = `${cell.style.width}`;
-        // cell.innerText = (c + 1);
-        container.appendChild(cell).className = "grid-item";
-    };
-};
+        //function to reset the grid
+        function clearGrid(){
+            clear.addEventListener('click', e=>{
+                square.style.backgroundColor = "black"
+            })
+        }
 
-makeRows(20, 20);
+        clearGrid();    
+    }
+}
 
+createGrid(16);
 
-// Query every square
-const grid = document.querySelectorAll('.grid-item');
-
-// Add listener to change color when square is entered.
-grid.forEach(square => square.addEventListener('mouseover', (e) => {
-    console.log(square);
-    // e.target.addEventListener('pointerdown', (x) => {
-
-    // })
-    square.classList.add('green');
-}));
 
