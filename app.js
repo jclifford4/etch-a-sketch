@@ -3,6 +3,10 @@
 let clear = document.querySelector("button");
 let container = document.querySelector('#grid-container');
 
+let sliderText = document.querySelector('.size');
+let sliderValue = document.querySelector('.slider');
+
+
 // Button Listener
 clear.addEventListener('click', () => {
     resetSize();
@@ -11,7 +15,8 @@ clear.addEventListener('click', () => {
 // Resets grid size on click
 function resetSize()
 {
-    let number = prompt("What size would you like the grid to be? (1-100)");
+    let number = sliderValue.value;
+    console.log(number);
 
     // Dynamically rescales the 
     container.style.gridTemplateRows = `repeat(${number}, 1fr)`;
@@ -41,7 +46,7 @@ function createGrid(size){
         //function to reset the grid
         function clearGrid(){
             clear.addEventListener('click', e=>{
-                square.style.backgroundColor = "black"
+                square.style.backgroundColor = "white"
             })
         }
 
@@ -50,5 +55,28 @@ function createGrid(size){
 }
 
 createGrid(16);
+
+
+sliderValue.addEventListener('input', slider => {
+    // console.log(slider.target.value);
+    updateSliderText(slider.target.value);
+    updateSliderValue(slider.target.value);
+})
+
+
+function updateSliderText(val)
+{
+    sliderText.innerHTML = `${val}x${val}`;
+    
+}
+
+function updateSliderValue(val)
+{
+    sliderValue.value = val;
+}
+
+
+
+
 
 

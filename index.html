@@ -9,11 +9,20 @@
 </head>
 <body>
     <div id="content">
-        <button>Click</button>
-        <div id="grid-container">
-            
-        </div>
+        <div class="tools">
+            <button class="reset">Reset Grid</button>
+            <div class="color-picker">Color Picker</div>
+            <div class="save">Save</div>
 
+        </div>
+        <div id="grid-container"></div>
+    </div>
+    <div class="slider-container">
+        <div class="block"></div>
+        <div class="slider-div">
+            <p class="size">16x16</p>
+            <input type="range" min="1" max="100", value="16" class="slider">
+        </div>
     </div>
     <script src="app.js"></script>
 </body>
