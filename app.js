@@ -10,11 +10,10 @@ let sliderText = document.querySelector('.size');
 let sliderValue = document.querySelector('.slider');
 
 
-
-
-
 // Button Listener
 clear.addEventListener('click', () => {
+    drawer.style.backgroundColor = 'rgb(' + [255,107,53].join(',') + ')';
+    eraser.style.backgroundColor = 'white';
     resetSize();
 })
 
@@ -22,7 +21,7 @@ clear.addEventListener('click', () => {
 function resetSize()
 {
     let number = sliderValue.value;
-    // console.log(number);
+   
 
     // Dynamically rescales the 
     container.style.gridTemplateRows = `repeat(${number}, 1fr)`;
@@ -33,35 +32,67 @@ function resetSize()
 // Eraser listener, removes draw active.
 eraser.addEventListener('click', event => 
 {
-    // console.log(event.target);
+    
     eraser = event.target;
     eraser.classList.add('active');
     drawer.classList.remove('active');
+    eraser.style.backgroundColor = 'rgb(' + [255,107,53].join(',') + ')';
+    drawer.style.backgroundColor = 'white';
 });
 
 // Draw listener, removes eraser active.
 drawer.addEventListener('click', event => 
 {
-    // console.log(event.target);
+    
     drawer = event.target;
     drawer.classList.add('active');
     eraser.classList.remove('active');
+    drawer.style.backgroundColor = 'rgb(' + [255,107,53].join(',') + ')';
+    eraser.style.backgroundColor = 'white';
 }); 
 
 
 // Create the grid size
+
+
+function eraseSquare(square)
+{
+    square.backgroundColor = 'white';
+}
+
+
+sliderValue.addEventListener('input', slider => {
+    // console.log(slider.target.value);
+    updateSliderText(slider.target.value);
+    updateSliderValue(slider.target.value);
+})
+
+
+function updateSliderText(val)
+{
+    sliderText.innerHTML = `${val}x${val}`;
+    
+}
+
+function updateSliderValue(val)
+
+{
+    sliderValue.value = val;
+    
+    
+}
+
 function createGrid(size){
 
     container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    drawer.classList.add('active');
+    drawer.style.backgroundColor = 'rgb(' + [255,107,53].join(',') + ')';
     
     
     let color = 'black';
     
-    console.log(eraser.classList.contains('active'));
-    console.log(color);
-    
-    // Size
+    // Set squares
     for (let i = 0; i < size*size; i++) {
         
         let square = document.createElement("div");
@@ -75,14 +106,23 @@ function createGrid(size){
 
             // Don't allow user select
             square.style.userSelect = 'none';
+            square.addEventListener('mousedown', j => {
 
+                if (eraser.classList.contains('active'))
+                    square.style.backgroundColor = 'white'
+
+                if (drawer.classList.contains('active'))
+                    square.style.backgroundColor = 'black';
+                
+
+                // square.style.backgroundColor = 'black';
+            })
             // If mouse click is down, color the square
             if (e.buttons === 1)
             {
 
                 if (eraser.classList.contains('active'))
                     color = 'white';
-                
                 
                 if (drawer.classList.contains('active'))
                     color = 'black';
@@ -107,31 +147,6 @@ function createGrid(size){
 
 createGrid(16);
 
-
-function eraseSquare(square)
-{
-    square.backgroundColor = 'white';
-}
-
-
-sliderValue.addEventListener('input', slider => {
-    // console.log(slider.target.value);
-    updateSliderText(slider.target.value);
-    updateSliderValue(slider.target.value);
-})
-
-
-function updateSliderText(val)
-{
-    sliderText.innerHTML = `${val}x${val}`;
-    
-}
-
-function updateSliderValue(val)
-{
-    sliderValue.value = val;
-
-}
 
 
 
