@@ -13,11 +13,6 @@ let inkWhite = 'rgb(' + [255, 252, 249].join(',') + ')';
 let buttonColor = 'rgb(' + [194, 140, 174].join(',') + ')';
 let hoverColor = 'rgb(' + [7, 160, 195].join(',') + ')';
 
-
-
-
-
-
 // Button Listener
 clear.addEventListener('click', () => {
     drawer.style.backgroundColor = buttonColor;
@@ -27,13 +22,11 @@ clear.addEventListener('click', () => {
     resetSize();
 })
 
-
 // Resets grid size on click
 function resetSize()
 {
     let number = sliderValue.value;
    
-
     // Dynamically rescales the 
     container.style.gridTemplateRows = `repeat(${number}, 1fr)`;
     container.style.gridTemplateColumns = `repeat(${number}, 1fr)`;
@@ -43,7 +36,6 @@ function resetSize()
 // Eraser listener, removes draw active.
 eraser.addEventListener('click', event => 
 {
-    
     eraser = event.target;
     eraser.classList.add('active');
     drawer.classList.remove('active');
@@ -88,10 +80,6 @@ buttons.forEach(button => {
             button.style.transform = 'scale(0.9)';
     })
 
-    
-
-    
-    
 })
 
 buttons[0].addEventListener('click', (e) => {
@@ -107,23 +95,10 @@ buttons[0].addEventListener('mouseleave', (e) => {
 });
 
 
-
-
-
-
-
-
-
-
-
-// Create the grid size
-
-
 function eraseSquare(square)
 {
     square.backgroundColor = inkWhite;
 }
-
 
 sliderValue.addEventListener('input', slider => {
     // console.log(slider.target.value);
@@ -131,19 +106,14 @@ sliderValue.addEventListener('input', slider => {
     updateSliderValue(slider.target.value);
 })
 
-
 function updateSliderText(val)
 {
-    sliderText.innerHTML = `${val}x${val}`;
-    
+    sliderText.innerHTML = `${val}x${val}`; 
 }
 
 function updateSliderValue(val)
-
 {
     sliderValue.value = val;
-    
-    
 }
 
 function createGrid(size){
@@ -154,7 +124,6 @@ function createGrid(size){
     drawer.style.boxShadow = 'inset 0 0 4px';
     drawer.style.backgroundColor = buttonColor;
     
-    
     let color = 'black';
     
     // Set squares
@@ -164,33 +133,24 @@ function createGrid(size){
         square.style.backgroundColor = "white";
         container.appendChild(square);
 
-        
-        
-
         //change background color of a square on hover
         square.addEventListener('mouseover', e => {
-           
-
+        
             // Don't allow user select
             square.style.userSelect = 'none';
             square.addEventListener('mousedown', j => {
 
                 if (eraser.classList.contains('active'))
-                {
-                    
                     square.style.backgroundColor = inkWhite;
-                }
-
+            
                 if (drawer.classList.contains('active'))
                     square.style.backgroundColor = inkBlack;
-                
 
-                // square.style.backgroundColor = 'black';
             })
+
             // If mouse click is down, color the square
             if (e.buttons === 1)
             {
-
                 if (eraser.classList.contains('active'))
                     color = inkWhite;
                 
@@ -198,7 +158,6 @@ function createGrid(size){
                     color = inkBlack;
 
                 square.style.backgroundColor = color;
-                
             }
         })
 
