@@ -8,14 +8,25 @@ let container = document.querySelector('#grid-container');
 
 let sliderText = document.querySelector('.size');
 let sliderValue = document.querySelector('.slider');
+let inkBlack = 'rgb(' + [31, 31, 31].join(',') + ')';
+let inkWhite = 'rgb(' + [255, 252, 249].join(',') + ')';
+let buttonColor = 'rgb(' + [194, 140, 174].join(',') + ')';
+let hoverColor = 'rgb(' + [7, 160, 195].join(',') + ')';
+
+
+
+
 
 
 // Button Listener
 clear.addEventListener('click', () => {
-    drawer.style.backgroundColor = 'rgb(' + [255,107,53].join(',') + ')';
-    eraser.style.backgroundColor = 'white';
+    drawer.style.backgroundColor = buttonColor;
+    eraser.style.backgroundColor = inkWhite;
+    drawer.style.boxShadow = 'inset 2px 2px 2px';
+    eraser.style.boxShadow = '2px 2px 20px';
     resetSize();
 })
+
 
 // Resets grid size on click
 function resetSize()
@@ -36,20 +47,73 @@ eraser.addEventListener('click', event =>
     eraser = event.target;
     eraser.classList.add('active');
     drawer.classList.remove('active');
-    eraser.style.backgroundColor = 'rgb(' + [255,107,53].join(',') + ')';
-    drawer.style.backgroundColor = 'white';
+    console.log(drawer.attributes);
+    eraser.style.boxShadow = 'inset 0 0 4px';
+    drawer.style.boxShadow = '2px 2px 20px';
+    eraser.style.backgroundColor = buttonColor
+    drawer.style.backgroundColor = inkWhite;
+    drawer.style.transform = 'scale(1.0)';
 });
 
 // Draw listener, removes eraser active.
 drawer.addEventListener('click', event => 
 {
-    
     drawer = event.target;
     drawer.classList.add('active');
     eraser.classList.remove('active');
-    drawer.style.backgroundColor = 'rgb(' + [255,107,53].join(',') + ')';
-    eraser.style.backgroundColor = 'white';
-}); 
+    drawer.style.boxShadow = 'inset 0 0 4px';
+    eraser.style.boxShadow = '2px 2px 20px';
+    drawer.style.backgroundColor = buttonColor;
+    eraser.style.backgroundColor = inkWhite;
+    eraser.style.transform = 'scale(1.0)';
+});
+
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => {
+    button.addEventListener('mouseover', () => {
+        if (!button.classList.contains('active'))
+            button.style.backgroundColor = hoverColor;
+            
+    })
+
+    button.addEventListener('mouseleave', () => {
+        if (!button.classList.contains('active'))
+            button.style.backgroundColor = inkWhite;
+    })
+
+
+    button.addEventListener('click', () => {
+        if (button.classList.contains('active'))
+            button.style.transform = 'scale(0.9)';
+    })
+
+    
+
+    
+    
+})
+
+buttons[0].addEventListener('click', (e) => {
+    e.target.style.boxShadow = 'inset 0 0 4px';
+    e.target.style.transform = 'scale(0.9)';
+    
+
+});
+
+buttons[0].addEventListener('mouseleave', (e) => {
+    e.target.style.boxShadow = '2px 2px 20px'
+    e.target.style.transform = 'scale(1.0)';
+});
+
+
+
+
+
+
+
+
+
 
 
 // Create the grid size
@@ -57,7 +121,7 @@ drawer.addEventListener('click', event =>
 
 function eraseSquare(square)
 {
-    square.backgroundColor = 'white';
+    square.backgroundColor = inkWhite;
 }
 
 
@@ -87,7 +151,8 @@ function createGrid(size){
     container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     drawer.classList.add('active');
-    drawer.style.backgroundColor = 'rgb(' + [255,107,53].join(',') + ')';
+    drawer.style.boxShadow = 'inset 0 0 4px';
+    drawer.style.backgroundColor = buttonColor;
     
     
     let color = 'black';
@@ -98,21 +163,26 @@ function createGrid(size){
         let square = document.createElement("div");
         square.style.backgroundColor = "white";
         container.appendChild(square);
+
+        
         
 
         //change background color of a square on hover
         square.addEventListener('mouseover', e => {
-            // console.log(e.buttons === 1);
+           
 
             // Don't allow user select
             square.style.userSelect = 'none';
             square.addEventListener('mousedown', j => {
 
                 if (eraser.classList.contains('active'))
-                    square.style.backgroundColor = 'white'
+                {
+                    
+                    square.style.backgroundColor = inkWhite;
+                }
 
                 if (drawer.classList.contains('active'))
-                    square.style.backgroundColor = 'black';
+                    square.style.backgroundColor = inkBlack;
                 
 
                 // square.style.backgroundColor = 'black';
@@ -122,10 +192,10 @@ function createGrid(size){
             {
 
                 if (eraser.classList.contains('active'))
-                    color = 'white';
+                    color = inkWhite;
                 
                 if (drawer.classList.contains('active'))
-                    color = 'black';
+                    color = inkBlack;
 
                 square.style.backgroundColor = color;
                 
@@ -139,6 +209,8 @@ function createGrid(size){
             clear.addEventListener('click', e=>{
                 square.style.backgroundColor = "white"
             })
+            buttons[1].style.transform = 'scale(0.9)';
+            
         }
 
         clearGrid();    
@@ -146,7 +218,6 @@ function createGrid(size){
 }
 
 createGrid(16);
-
 
 
 
