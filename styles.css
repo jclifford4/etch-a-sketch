@@ -34,10 +34,11 @@ body
 .links 
 {
   display: flex;
+  
   /* border:2px solid black; */
-  width: 200px;
+  width: 400px;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .git {
@@ -308,6 +309,15 @@ button:hover
 .footer-container .link:hover
 {
   transform:rotate(360deg) scale(1.2);
+}
+
+.bottom-text
+{
+  font-size: 14px;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 
