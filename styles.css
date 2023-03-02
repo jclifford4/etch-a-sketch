@@ -10,19 +10,14 @@ body
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  /* border: 1px red dashed; */
   height: 100dvh;
-  /* justify-content: center; */
   align-items: center;
   background-color: rgba(31, 31, 31, 1);
-
-  /* background-color: #B04F7D; */
 }
 
 .hero 
 {
   display: flex;
-  /* border: 2px white solid; */
   flex: 1;
   font-size: 32px;
   font-weight: 700;
@@ -34,17 +29,14 @@ body
 .links 
 {
   display: flex;
-  
-  /* border:2px solid black; */
   width: 400px;
   align-items: center;
   justify-content: center;
 }
 
-.git {
+.git 
+{
   display: flex;
-  /* border: 1px solid white; */
-
   height: 30px;
   width: 55px;
   align-items: center;
@@ -53,10 +45,9 @@ body
 
 }
 
-.linked-in {
+.linked-in 
+{
   display: flex;
-  /* border: 1px solid white; */
-
   height: 40px;
   width: 75px;
   align-items: center;
@@ -65,7 +56,8 @@ body
 }
 
 .git-img,
-.link-img {
+.link-img 
+{
   object-fit: contain;
   max-width: 100%;
   max-height: 100%;
@@ -74,11 +66,9 @@ body
 .header-container 
 {
   display: flex;
-  /* flex: 1; */
   min-width: 100%;
   align-items: center;
   justify-content: flex-end;
-  /* background-color: rgba(136, 187, 146, 1); */
   background-color: rgb(255, 251, 252);
   height: 50px;
   width: 100%;
@@ -101,7 +91,6 @@ body
   height: 500px;
   border: 2px grey solid;
   box-shadow: 4px 2px 2px rgba(0, 0, 0, .4);
-
 }
 
 .slider-div 
@@ -148,7 +137,6 @@ body
     cursor: ew-resize;
     background: #434343;
     box-shadow: -80px 0 0 80px rgb(194, 140, 174);
-    /* border-radius: 5px; */
   }
 }
 
@@ -229,7 +217,6 @@ button
   margin-top: 2px;
   border-radius: 4px;
   border: 1px black solid;
-
 }
 
 .color-slide
@@ -240,17 +227,14 @@ button
   gap: 8px;
   height: 20px;
   width: 98%;
-  /* border: 1px blue solid; */
 }
 
 .color
 {
-  /* border: 1px red dashed; */
   text-align: start;
   min-width: 50px;
   font-size: 14px;
   font-weight: 500;
-  
 }
 
 .slider 
@@ -269,7 +253,6 @@ button
 {
   margin-bottom: 10px;
 }
-
 
 .footer-container .links img
 {
@@ -294,7 +277,6 @@ button:hover
   border: 1px solid rgba(31, 31, 31, 0.4);
   background-color: rgb(74, 123, 157);
 }
-
 
 .footer-container 
 {

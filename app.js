@@ -1,5 +1,5 @@
 
-// Query the mian components
+// Query the main components
 let clear = document.querySelector(".clear");
 let eraser = document.querySelector('.eraser');
 let drawer = document.querySelector('.draw');
@@ -15,11 +15,8 @@ let inkWhite = 'rgb(' + [255, 252, 249].join(',') + ')';
 let buttonColor = 'rgb(' + [194, 140, 174].join(',') + ')';
 let hoverColor = 'rgb(' + [7, 160, 195].join(',') + ')';
 
-
-
 const buttons = document.querySelectorAll('button');
 const colorSlides = document.querySelectorAll('.mini-slide');
-
 
 colorSlides.forEach(slide => {
     slide.addEventListener('input', setPreviewColor);
