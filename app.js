@@ -5,6 +5,8 @@ let eraser = document.querySelector('.eraser');
 let drawer = document.querySelector('.draw');
 drawer.classList.add('active');
 let container = document.querySelector('#grid-container');
+let colorPicker = document.querySelector('.color-picker');
+let previewWindow = document.querySelector('.preview');
 
 let sliderText = document.querySelector('.size');
 let sliderValue = document.querySelector('.slider');
@@ -12,6 +14,31 @@ let inkBlack = 'rgb(' + [31, 31, 31].join(',') + ')';
 let inkWhite = 'rgb(' + [255, 252, 249].join(',') + ')';
 let buttonColor = 'rgb(' + [194, 140, 174].join(',') + ')';
 let hoverColor = 'rgb(' + [7, 160, 195].join(',') + ')';
+
+
+
+const buttons = document.querySelectorAll('button');
+const colorSlides = document.querySelectorAll('.mini-slide');
+
+
+colorSlides.forEach(slide => {
+    slide.addEventListener('input', setPreviewColor);
+});
+
+
+function setPreviewColor()
+{
+   let red = colorSlides[0].value;
+   let green = colorSlides[1].value;
+   let blue = colorSlides[2].value;
+
+   previewWindow.style.backgroundColor = 'rgb(' + [red, green, blue].join(',') + ')';
+}
+
+function getPreviewColor()
+{
+    return previewWindow.style.backgroundColor;
+}
 
 // Button Listener
 clear.addEventListener('click', () => {
@@ -61,7 +88,6 @@ drawer.addEventListener('click', event =>
 });
 
 
-const buttons = document.querySelectorAll('button');
 buttons.forEach(button => {
     button.addEventListener('mouseover', () => {
         if (!button.classList.contains('active'))
@@ -144,7 +170,7 @@ function createGrid(size){
                     square.style.backgroundColor = inkWhite;
             
                 if (drawer.classList.contains('active'))
-                    square.style.backgroundColor = inkBlack;
+                    square.style.backgroundColor = getPreviewColor();
 
             })
 
@@ -152,13 +178,12 @@ function createGrid(size){
             if (e.buttons === 1)
             {
                 if (eraser.classList.contains('active'))
-                    color = inkWhite;
+                    square.style.backgroundColor = inkWhite;
                 
                 if (drawer.classList.contains('active'))
-                    color = inkBlack;
-
-                square.style.backgroundColor = color;
+                    square.style.backgroundColor = getPreviewColor();
             }
+
         })
 
         
@@ -169,6 +194,7 @@ function createGrid(size){
                 square.style.backgroundColor = "white"
             })
             buttons[1].style.transform = 'scale(0.9)';
+            previewWindow.style.backgroundColor = inkBlack;
             
         }
 

@@ -24,7 +24,12 @@
     <div id="content">
         <div class="tools">
             <button class="clear">Reset Grid</button>
-            <div class="color-picker">Color Picker</div>
+            <div class="color-picker">
+                <div class="preview"></div>
+                <div class="color-slide"><div class="color">Red:</div><input type="range" min="0" max="255", value="16" class="mini-slide"></div>
+                <div class="color-slide"><div class="color">Green:</div><input type="range" min="0" max="255", value="16" class="mini-slide"></div>
+                <div class="color-slide"><div class="color">Blue:</div><input type="range" min="0" max="255", value="16" class="mini-slide"></div>
+            </div>
             <button class="draw">Draw</button>
             <button class="eraser">Erase</button>
             
