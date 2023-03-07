@@ -1,2 +1,23 @@
-# sketch-pad
-<h2> A drawing pad using pixels <h2>
+# Sketch Pad
+
+### Description
+A web based drawing pad
+
+### Functionality
+* Dynamically resizable drawing area
+* Color selection
+* Erasing capability
+* Clear grid entirely
+
+### Code Base
+* JavaScript
+* HTML
+* CSS
+
+
+### Showcase 
+* Black and White 16x16 grid
+![](./images/showcase/smiley.png "no color")
+
+* Color 40x40 grid
+![](./images/showcase/color-car.png "color car")
