@@ -1,7 +1,7 @@
 # Sketch Pad
 
 ### Description
-A web based drawing pad
+Resizable drawing pad for the web
 
 ### Functionality
 * Dynamically resizable drawing area
