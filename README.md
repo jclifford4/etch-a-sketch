@@ -17,7 +17,7 @@ Resizable drawing pad for the web
 
 ### Showcase 
 * Black and White 16x16 grid
-![](./images/showcase/smiley.png "no color")
+![](./images/showcase/mona-lisa.png "color art")
 
 * Color 40x40 grid
 ![](./images/showcase/color-car.png "color car")
