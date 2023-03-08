@@ -16,7 +16,7 @@ Resizable drawing pad for the web
 
 
 ### Showcase 
-*Mona Lisa 16x16 grid
+* Mona Lisa 16x16 grid
 ![](./images/showcase/mona-lisa.png "color art")
 
 * Color 40x40 grid
