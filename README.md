@@ -1,4 +1,5 @@
 # Sketch Pad
+## [Live Preview](https://jclifford4.github.io/sketch-pad/)
 
 ### Description
 Resizable drawing pad for the web
